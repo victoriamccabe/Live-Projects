@@ -29,12 +29,12 @@ The system provides:
 ---
 
 ## Project Stucture (After I finished the stories)
-``` text
+<pre>
 Solution/
 └── TheatreCMS3/
     ├── App_Data
     ├── App_Start/
-    │   ├── [BundleConfig.cs](Files\BundleConfig.cs) 
+    │   ├── <a href="Files/BundleConfig.cs">BundleConfig.cs</a>
     │   └── ...
     ├── App_Themes
     ├── Areas/
@@ -42,25 +42,25 @@ Solution/
     │   ├── Prod
     │   └── Rent/
     │       ├── Controllers/
-    │       │   └── [RentalHistoriesConstroller.cs](Files/Controllers/RentalHistoriesController.cs)
+    │       │   └── <a href="Files/Controllers/RentalHistoriesController.cs">RentalHistoriesConstroller.cs</a>
     │       ├── Data
     │       ├── Models/
-    │       │   └── [RentalHistory.cs](Files/Models/RentalHistory.cs)
+    │       │   └── <a href="Files/Models/RentalHistory.cs">RentalHistory.cs</a>
     │       ├── Views/
     │       │   ├── RentalHistories/
-    │       │   │   ├── [Create.cshtml](Files/RentalHistories/Create.cshtml)
-    │       │   │   ├── [Delete.cshtml](Files/RentalHistories/Delete.cshtml)
-    │       │   │   ├── [Details.cshtml](Files/RentalHistories/Details.cshtml)
-    │       │   │   ├── [Edit.cshtml](Files/RentalHistories/Edit.cshtml)
-    │       │   │   └── [Index.cshtml](Files/RentalHistories/Index.cshtml)
+    │       │   │   ├── <a href="Files/RentalHistories/Create.cshtml">Create.cshtml</a>
+    │       │   │   ├── <a href="Files/RentalHistories/Delete.cshtml">Delete.cshtml</a>
+    │       │   │   ├── <a href="Files/RentalHistories/Details.cshtml">Details.cshtml</a>
+    │       │   │   ├── <a href="Files/RentalHistories/Edit.cshtml">Edit.cshtml</a>
+    │       │   │   └── <a href="Files/RentalHistories/Index.cshtml">Index.cshtml</a>
     │       │   └── ...
     │       └── RentAreaRegistration.cs  
     ├── Content/
     │   ├── Areas/
-    │   │   ├── [Rent.css](Files/Content/Rent.css)
+    │   │   ├── <a href="Files/Content/Rent.css">Rent.css</a>
     │   │   └── ...
     │   ├── Site.css
-    │   └── ...    
+    │   └── ...
     ├── Controllers
     ├── Data
     ├── Helpers
@@ -68,7 +68,7 @@ Solution/
     ├── Models
     ├── Scripts/
     │   ├── Areas/
-    │   │   ├── [Rent.js](Files/Scripts/Rent.js)
+    │   │   ├── <a href="Files/Scripts/Rent.js">Rent.js</a>
     │   │   └── ...
     │   ├── Site.js
     │   └── ...
@@ -81,7 +81,8 @@ Solution/
     ├── packages.config
     ├── Startup.cs
     └── Web.config
- ```  
+</pre>
+
 ---
 
 ##  Project Rules
