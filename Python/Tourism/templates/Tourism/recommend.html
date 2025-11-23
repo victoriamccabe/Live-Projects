@@ -1,0 +1,22 @@
+{% extends "Tourism/tourism_base.html" %}
+{% block content %}
+<h1> Recommend a place !</h1>
+<br>
+<ul>
+    <li><p><strong>📍 Place Name:</strong> Enter the name of the place you want to recommend. This can be a restaurant, park, museum, hiking trail, or any location you think others should visit.</p></li>
+
+    <li><p><strong>🗺️ Province:</strong> Select the Argentine province where this place is located from the dropdown menu. Make sure to choose the correct province to help others find it easily.</p></li>
+
+    <li><p><strong>📝 Description:</strong> Write a brief description explaining why you recommend this place. You can mention what makes it special, what you enjoyed most, or any tips for visitors.</p></li>
+
+    <li><p><strong>👤 Your Name:</strong> Tell us your name or nickname — this lets others know who shared the recommendation. Feel free to keep it anonymous if you prefer by using a nickname.</p></li>
+
+    <li><p><strong>⭐ Score:</strong> Rate the place from 1 (lowest) to 5 (highest) stars based on your experience. This helps other travelers quickly see how much you enjoyed it.</p></li>
+</ul>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

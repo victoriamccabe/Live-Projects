@@ -1,0 +1,62 @@
+{% extends "Tourism/tourism_base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="province-container">
+
+    <h1 class="province-title">Recommendations for {{ province }}</h1>
+
+    {% if items %}
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Place</th>
+                    <th>Description</th>
+                    <th>Recommended By</th>
+                    <th>Province</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.place_name }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.your_name }}</td>
+                    <td>{{ item.province }}</td>
+                    <td>
+                        {% for i in "12345"|slice:":item.score"|make_list %}⭐{% endfor %}
+                        ({{ item.score }})
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p>No results found for {{ province }}.</p>
+    {% endif %}
+
+
+
+    <h2 class="province-title">Weather in {{ province }}</h2>
+
+    {% if weather %}
+ <div class="weather-card-wrapper-province">
+    <div class="weather-card">
+        <h3>{{ province }}</h3>
+        <img src="{{ weather.icon }}" alt="Weather icon" class="weather-icon">
+        <p class="weather-condition"><strong>{{ weather.condition }}</strong></p>
+        <p>🌡️ {{ weather.temperature }} °C</p>
+        <p>🕒 {{ weather.local_time }}</p>
+    </div>
+</div>
+    {% else %}
+    <p class="weather-error">Weather data not available.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

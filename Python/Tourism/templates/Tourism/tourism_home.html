@@ -1,0 +1,83 @@
+{% extends "Tourism/tourism_base.html" %}
+
+{# Load the static template tag to reference static files like CSS and JS #}
+
+{% block title %}
+Welcome to Argentina Tourism
+{# Set the page title for this specific page #}
+{% endblock %}
+
+{% block content %}
+
+<h1>Welcome to Argentina Tourism</h1>
+
+<p>Argentina is a land of breathtaking landscapes, vibrant cities, rich culture, and warm-hearted people. From the
+    glaciers of Patagonia and the majestic Andes mountains to the colorful streets of Buenos Aires and the powerful
+    Iguazú Falls, there's something for every traveler to discover and fall in love with. Whether you seek adventure in
+    nature, immerse yourself in history, or savor world-famous cuisine and dance the tango, Argentina offers endless
+    experiences to make your journey unforgettable.
+
+    Our goal is to help you explore this amazing country by connecting you with real recommendations from people who
+    have experienced it firsthand. We believe that the best way to discover a place is through the eyes of locals and
+    fellow travelers sharing hidden gems, favorite restaurants, peaceful retreats, and thrilling activities that might
+    not be in typical guidebooks.</p>
+
+<p>Our goal is to help you explore this amazing country by connecting you with real recommendations from people who have
+    experienced it firsthand.</p>
+
+<h2>How to Use This Website</h2>
+
+<p><strong>🗺️ Interactive Map:</strong> Explore Argentina like never before! Click on any province on the interactive
+    map to discover traveler-submitted recommendations unique to that region. Whether you’re interested in hidden gems,
+    iconic landmarks, local eateries, or cultural experiences, each province page is packed with authentic tips and
+    stories from people who know the area best.</p>
+
+<p><strong>📍 Recommend a Place:</strong> ave an unforgettable spot you want to share with others? Our <strong>"Recommend
+    a Place"</strong> feature lets you easily submit your personal favorite destinations, restaurants, or activities.
+    Just fill out a simple form telling us why you love it, and help build a vibrant community of explorers eager to
+    discover Argentina through your eyes.</p>
+
+<p><strong>🌟 See All</strong> looking for inspiration or want to browse everything at once? Visit the <strong>"See
+    All"</strong> page to access the full collection of recommendations across every corner of Argentina. Filter,
+    search, and explore a wide variety of places and experiences, all contributed by fellow travelers and locals alike.
+</p>
+<script>
+    const provinceUrls = {
+      salta: "{% url 'Tourism:show_province' 'salta' %}",
+      buenos_aires: "{% url 'Tourism:show_province' 'buenos-aires' %}",
+      ciudad_buenos_aires: "{% url 'Tourism:show_province' 'ciudad-autonoma-de-buenos-aires' %}",
+      san_luis: "{% url 'Tourism:show_province' 'san-luis' %}",
+      entre_rios: "{% url 'Tourism:show_province' 'entre-rios' %}",
+      la_rioja: "{% url 'Tourism:show_province' 'la-rioja' %}",
+      santiago_del_estero: "{% url 'Tourism:show_province' 'santiago-del-estero' %}",
+      chaco: "{% url 'Tourism:show_province' 'chaco' %}",
+      san_juan: "{% url 'Tourism:show_province' 'san-juan' %}",
+      catamarca: "{% url 'Tourism:show_province' 'catamarca' %}",
+      la_pampa: "{% url 'Tourism:show_province' 'la-pampa' %}",
+      mendoza: "{% url 'Tourism:show_province' 'mendoza' %}",
+      misiones: "{% url 'Tourism:show_province' 'misiones' %}",
+      formosa: "{% url 'Tourism:show_province' 'formosa' %}",
+      neuquen: "{% url 'Tourism:show_province' 'neuquen' %}",
+      rio_negro: "{% url 'Tourism:show_province' 'rio-negro' %}",
+      santa_fe: "{% url 'Tourism:show_province' 'santa-fe' %}",
+      tucuman: "{% url 'Tourism:show_province' 'tucuman' %}",
+      chubut: "{% url 'Tourism:show_province' 'chubut' %}",
+      tierra_del_fuego: "{% url 'Tourism:show_province' 'tierra-del-fuego' %}",
+      corrientes: "{% url 'Tourism:show_province' 'corrientes' %}",
+      cordoba: "{% url 'Tourism:show_province' 'cordoba' %}",
+      jujuy: "{% url 'Tourism:show_province' 'jujuy' %}",
+      santa_cruz: "{% url 'Tourism:show_province' 'santa-cruz' %}"
+    };
+</script>
+
+
+{# The div where the SimpleMaps interactive map will render #}
+<div id="map-wrapper">
+    <div id="map"></div>
+</div>
+
+<p>We hope this site inspires your next adventure whether you're planning your first trip to Argentina or returning to
+    discover even more.</p>
+
+{% endblock %}
+

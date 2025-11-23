@@ -1,0 +1,36 @@
+{% extends "Tourism/tourism_base.html" %}
+{% block content %}
+<h1>Search Results for "{{ query }}"</h1>
+
+{% if items %}
+<div class="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th>Place</th>
+            <th>Description</th>
+            <th>Recommended By</th>
+            <th>Province</th>
+            <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.place_name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.your_name }}</td>
+            <td>{{ item.province }}</td>
+            <td>
+                {% for i in "12345"|slice:":item.score"|make_list %}⭐{% endfor %}
+                ({{ item.score }})
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p>No results found.</p>
+{% endif %}
+{% endblock %}

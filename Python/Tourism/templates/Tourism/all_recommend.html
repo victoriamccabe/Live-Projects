@@ -1,0 +1,45 @@
+{% extends "Tourism/tourism_base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>All User Recommendations</h1>
+
+<form method="GET" action="{% url 'Tourism:search_results' %}">
+    <input type="text" name="q" placeholder="Search places..." autocomplete="off" value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
+
+<div class="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th>Place</th>
+            <th>Recommended By</th>
+            <th>Province</th>
+            <th>Score</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.place_name }}</td>
+            <td>{{ item.your_name }}</td>
+            <td>{{ item.province }}</td>
+            <td>
+                {% for i in "12345"|slice:":item.score"|make_list %}⭐{% endfor %}
+                ({{ item.score }})
+            </td>
+            <td>
+                <a href="{% url 'Tourism:view_description' item.pk %}">View Description</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No recommendations found.</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

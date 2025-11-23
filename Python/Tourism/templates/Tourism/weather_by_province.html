@@ -1,0 +1,22 @@
+{% extends "Tourism/tourism_base.html" %}
+
+{% block content %}
+<h1 class="weather-title">🌤️ Current Weather by Province</h1>
+
+<div class="weather-grid">
+  {% for item in weather_data %}
+    <div class="weather-card" onclick="location.href='{% url 'Tourism:show_province' item.slug %}'" style="cursor: pointer;">
+      <h3>{{ item.province }}</h3>
+
+      {% if item.error %}
+        <p class="weather-error">{{ item.error }}</p>
+      {% else %}
+        <img src="{{ item.icon }}" alt="Weather Icon" class="weather-icon">
+        <p class="weather-condition"><strong>{{ item.condition }}</strong></p>
+        <p>🌡️ {{ item.temperature }} °C</p>
+        <p>🕒 {{ item.local_time }}</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

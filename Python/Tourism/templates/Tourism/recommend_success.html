@@ -1,0 +1,11 @@
+
+{% extends "Tourism/tourism_base.html" %}
+{% block title %}<h1>Success !</h1>{% endblock %}
+
+{% block content %}
+    <h1>Thank you for sharing your recommendation! </h1>
+    <p>We will process it and post it to the blog.</p>
+    </br>
+    <p>Do you have more places to share?</p>
+    <a href="{% url 'Tourism:recommend' %}">Click here!</a>
+{% endblock %}

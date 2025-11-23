@@ -1,0 +1,76 @@
+{% extends "Tourism/tourism_base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>{{ recommendation.place_name }}</h2>
+<!-- Main info table -->
+<div class="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th>Place</th>
+            <th>Province</th>
+            <th>Recommended By</th>
+            <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ recommendation.place_name }}</td>
+            <td>{{ recommendation.province }}</td>
+            <td>{{ recommendation.your_name }}</td>
+            <td>
+                {% for i in "12345"|slice:":recommendation.score"|make_list %}⭐{% endfor %}
+                ({{ recommendation.score }})
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Separate big description table -->
+<div class="table-container" style="margin-top: 20px;">
+    <table style="width: 100%; border: 1px solid #ddd;">
+        <thead>
+        <tr>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ recommendation.description }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Hidden form for Edit and Delete-->
+<form id="editForm{{ recommendation.pk }}" method="GET" action="{% url 'Tourism:edit_recommendation' recommendation.pk %}" style="display:none;">
+</form>
+<form id="deleteForm{{ recommendation.pk }}" method="POST" action="{% url 'Tourism:delete_recommendation' recommendation.pk %}" style="display:none;">
+    {% csrf_token %}
+</form>
+
+<!-- Buttons shown outside forms -->
+<button type="button" class="btn-edit" onclick="document.getElementById('editForm{{ recommendation.pk }}').submit();">
+    Edit
+</button>
+<br>
+<button type="button" class="btn-delete"
+        onclick="if(confirm('Are you sure you want to delete this recommendation?')) { document.getElementById('deleteForm{{ recommendation.pk }}').submit(); }">
+    Delete
+</button>
+<!-- Delete Confirmation Modal -->
+<div id="deleteModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <p>Are you sure you want to delete this recommendation?</p>
+    <div class="modal-buttons">
+      <button id="confirmDelete" class="btn-delete">Yes, Delete</button>
+      <button id="cancelDelete" class="btn-cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+<br>
+<a href="{% url 'Tourism:all_recommend' %}">← Back to all recommendations</a>
+{% endblock %}

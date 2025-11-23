@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Argentina Tourism{% endblock %}</title>
+
+    <!-- LINK TO STYLESHEET -->
+    <link rel="stylesheet" href="{% static 'Tourism/css/tourism_style.css' %}">
+
+</head>
+
+<body>
+
+<!-- NAVIGATION BAR -->
+<nav class="nav-bar">
+    <ul id="nav-border">
+        <li><a href="{% url 'Tourism:tourism_home' %}">Home</a></li>
+        <li><a href="{% url 'Tourism:recommend' %}">Recommend a Place</a></li>
+        <li><a href="{% url 'Tourism:all_recommend' %}">See All !</a></li>
+        <li><a href="{% url 'Tourism:weather_by_province' %}">🌦 Weather by Province (API)</a></li>
+    </ul>
+</nav>
+
+
+<div class="homepage-intro">
+
+    <!-- MAIN PAGE CONTENT -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p id="footer-text">{% block footer %}© Argentina Tourism{% endblock %}</p>
+</footer>
+
+
+<!-- JAVASCRIPT FILES -->
+{% block extra_scripts %}
+<script type="text/javascript" src="{% static 'Tourism/js/script.js' %}"></script>
+<script type="text/javascript" src="{% static 'Tourism/js/mapdata.js' %}"></script>
+<script type="text/javascript" src="{% static 'Tourism/js/countrymap.js' %}"></script>
+{% endblock %}
+
+</body>
+</html>
