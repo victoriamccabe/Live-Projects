@@ -5,6 +5,7 @@ The development process emphasized modern, scalable practices using **Bootstrap*
 
 Version control followed best practices with Git, including handling merge conflicts, pull requests, and migration resolutions. The project was managed using **Azure DevOps** within an **Agile Scrum** workflow involving daily standups and code retrospectives.
 
+![alt text](media/MAPJS.gif)
 
 ---
 ### Technical Overview
