@@ -5,41 +5,43 @@ The development process emphasized modern, scalable practices using **Bootstrap*
 
 Version control followed best practices with Git, including handling merge conflicts, pull requests, and migration resolutions. The project was managed using **Azure DevOps** within an **Agile Scrum** workflow involving daily standups and code retrospectives.
 
-## Technologies and concepts:
 
-- HTML, CSS, JavaScript, event listeners, imports, debugging
+---
+### Technical Overview
 
-- PyCharm for development
+**Backend (Django)**
+- Django models for storing recommendations
+- Class-based and function-based views for CRUD operations
+- Django Forms with validation and custom widgets
+- URL routing at both project and app level
+- Use of Django template inheritance and context rendering
 
-- Agile methodology & Scrum practices
+**Frontend**
+- Bootstrap for responsive layout and UI components
+- Custom CSS for project-specific styling
+- JavaScript for map interactions and enhanced UI behavior
+- Template separation for scalability (base, home, recommend, weather_by_province, etc.)
 
-- API and web-scraped data integration
+**API Integration**
+- Weather data retrieved using WeatherAPI /current.json endpoint
 
-- Responsive UI built with Bootstrap
+---
 
-
-## Live Project Rules
-- **Stories:** Complete 1–4 minimum; finishing more strengthens your portfolio.
-- **Daily Updates:** Join daily stand-ups. Send progress emails to the team. 
-- **Branching:** Follow naming conventions; never commit directly to main.
-- **Debugging:** Test often; try solving issues yourself or with peers before asking the project director.
-
-## Stories:
+## Stories
 
 
-# Table of Contents
+### Table of Contents
 1. [Basic App Structure](#basic-app-structure)
-2. [Create Model]
-3. [Display All Items]
-4. [Details View]
-5. [Edit And Delete Functions]
-6. [Connect to API]
+2. [Create Model](#create-model)
+3. [Display All Items](#display-all-items)
+4. [Edit And Delete Functions](#edit-and-delete-functions)
+5. [Connect to API](#connect-to-api)
 
 
 
+---
 
-
-## Project Stucture (After I finished the stories)
+### Project Stucture (After I finished the stories)
 
 <pre>
 Appbuilder9000/
@@ -50,10 +52,10 @@ Appbuilder9000/
 │   │   ├── admin.py
 │   │   ├── apps.py
 │   │   ├── models.py 
-│   │   ├──<a href="Python/AppBuilder9000/settings.py"> setting.py </a>
+│   │   ├──<a href="AppBuilder9000/settings.py"> setting.py </a>
 │   │   ├── test.py
-│   │   ├──<a href="Python/AppBuilder9000/urls.py"> urls.py </a>
-│   │   ├── <a href="Python/AppBuilder9000/views.py">views.py </a>
+│   │   ├──<a href="AppBuilder9000/urls.py"> urls.py </a>
+│   │   ├── <a href="AppBuilder9000/views.py">views.py </a>
 │   │   └── wsgi.py
 │   ├── Tourism/
 │   │   ├── management
@@ -61,30 +63,38 @@ Appbuilder9000/
 │   │   ├── static/
 │   │   │   └── Tourism/
 │   │   │       ├── css/
-│   │   │       │   └──<a href="Python/Tourism/static/Tourism/css/tourism_style.css"> tourism_style.css </a>
+│   │   │       │   └──<a href="Tourism/static/Tourism/css/tourism_style.css"> tourism_style.css </a>
 │   │   │       ├── images
 │   │   │       └── js/
-│   │   │           ├──<a href="Python/Tourism/static/Tourism/js/countrymap.js"> countrymap.js </a>
-│   │   │           ├──<a href="Python/Tourism/static/Tourism/js/mapdata.js"> mapdata.js</a>
-│   │   │           └──<a href="Python/Tourism/static/Tourism/js/script.js"> script.js</a>
-│   │   └── templates/
-│   │       └── Tourism/
-│   │           ├── <a href="Python/Tourism/templates/Tourism/provinces">provinces</a>/
-│   │           │   ├── Buenos_Aires.html 
-│   │           │   ├── Catamarca.html
-│   │           │   ├── Chaco.html
-│   │           │   ├── Chubut.html
-│   │           │   └── [...] (total: 23 provinces)  
-│   │           ├── __init__.py
-│   │           ├──<a href="Python/Tourism/templates/Tourism/all_recommend.html"> all_recommend.html</a>
-│   │           ├──<a href="Python/Tourism/templates/Tourism/edit_recommendation.html"> edit_recommendation.html</a>
-│   │           ├──<a href="Python/Tourism/templates/Tourism/recommend.html"> recommend.html</a>
-│   │           ├──<a href="Python/Tourism/templates/Tourism/recommend_success.html"> recommend_success.html</a>
-│   │           ├──<a href="Python/Tourism/templates/Tourism/search_results.html"> seach_results.html</a>
-│   │           ├──<a href="Python/Tourism/templates/Tourism/tourism_base.html"> tourism_base.html</a>
-│   │           ├── <a href="Python/Tourism/templates/Tourism/tourism_home.html">tourism_home.html</a>
-│   │           ├──<a href="Python/Tourism/templates/Tourism/view_description.html"> view_description.html</a>
-│   │           └──<a href="Python/Tourism/templates/Tourism/weather_by_province.html"> weather_by_province.html</a> 
+│   │   │           ├──<a href="Tourism/static/Tourism/js/countrymap.js"> countrymap.js </a>
+│   │   │           ├──<a href="Tourism/static/Tourism/js/mapdata.js"> mapdata.js</a>
+│   │   │           └──<a href="Tourism/static/Tourism/js/script.js"> script.js</a>
+│   │   ├── templates/
+│   │   │   └── Tourism/
+│   │   │       ├── provinces/
+│   │   │       │   ├── Buenos_Aires.html
+│   │   │       │   ├── Catamarca.html
+│   │   │       │   ├── Chaco.html
+│   │   │       │   ├── Chubut.html
+│   │   │       │   └── [...] (total: 23 provinces)  
+│   │   │       ├── __init__.py
+│   │   │       ├── <a href="Tourism/templates/Tourism/all_recommend.html"> all_recommend.html</a>
+│   │   │       ├── <a href="Tourism/templates/Tourism/edit_recommendation.html"> edit_recommendation.html</a>
+│   │   │       ├── <a href="Tourism/templates/Tourism/recommend.html"> recommend.html</a>
+│   │   │       ├── <a href="Tourism/templates/Tourism/recommend_success.html"> recommend_success.html</a>
+│   │   │       ├── <a href="Tourism/templates/Tourism/search_results.html"> seach_results.html</a>
+│   │   │       ├── <a href="Tourism/templates/Tourism/tourism_base.html"> tourism_base.html</a>
+│   │   │       ├── <a href="Tourism/templates/Tourism/tourism_home.html"> tourism_home.html</a>
+│   │   │       ├── <a href="Tourism/templates/Tourism/view_description.html"> view_description.html</a>
+│   │   │       └── <a href="Tourism/templates/Tourism/weather_by_province.html"> weather_by_province.html</a> 
+│   │   ├── __init__.py
+│   │   ├── <a href="Tourism/admin.py">admin.py </a>
+│   │   ├── <a href="Tourism/apps.py">apps.py</a>
+│   │   ├── <a href="Tourism/forms.py">forms.py</a>
+│   │   ├── <a href="Tourism/models.py">models.py</a>
+│   │   ├── <a href="Tourism/tests.py">tests.py</a>
+│   │   ├── <a href="Tourism/urls.py">urls.py</a>
+│   │   └── <a href="Tourism/views.py">views.py </a>      
 │   ├── [...](Other apps) 
 │   ├── __init__py
 │   ├── db.squile3
@@ -100,24 +110,26 @@ Appbuilder9000/
 ---
 
 ## Basic App Structure
+**Goal:** Set up the foundation of the app for users to comment on, rate, and recommend locations in Argentina.
 
+- Created a new Django app (Tourism) and registered it in <a href="AppBuilder9000/settings.py"> setting.py </a>
+- Added base templates (<a href="Tourism/templates/Tourism/tourism_base.html">tourism_base.html</a> and <a href="Tourism/templates/Tourism/tourism_home.html"> tourism_home.html</a>) with block tags for inheritance
+- Implemented home page view and configured URL routing
+- Linked the app’s home page to the main project index
+- Applied initial styling: navbar, background, title, and footer
 
-The goal of this app was to create a platform where tourists visiting Argentina could comment on their favorite places, rate them, and recommend them to other tourists.
-
-To complete this task, I first created a new app using `manage.py startapp` and registered it in the main project’s `settings.py`. Inside the new app folder, I created a `templates` directory containing `tourism_base.html` and `tourism_home.html` templates, making sure to include the necessary block tags for template inheritance. I then added a view function in `views.py` to render the home page and set up `urls.py` for the app, registering the URLs both in the app and in the main project.
-
-**MainApp/settings.py:**
+**Example Settings & URLs:**
 ```python
+MainApp/settings.py:
+
 INSTALLED_APPS = [
     [...]
     'Tourism',
 ]
-```
 
 
+MainApp/urls.py:
 
-**MainApp/urls.py:**
-``` python
 urlpatterns = [
     [...]
     path('Tourism/', include('Tourism.urls'), name='Tourism'),
@@ -125,16 +137,16 @@ urlpatterns = [
 ```
 
 
-To link the app’s home page with the project’s main home page (`templates/index.html`), I added an image link on the Appbuilder9000 home page. Finally, I added minimal content and basic styling to the base and home templates, including a navbar, background, title, and an optional footer. The story was considered complete once the home page displayed correctly, and I tested and debugged everything to ensure it worked as expected.
-
 ![alt text](media/MainApp.gif)
 
-
+---
 
 ## Display All Items
+**Goal:** Display and manage database content.
+- Added views to fetch and display all recommendations
+- Created forms for adding/editing recommendations
 
-To complete this task, I created a new HTML page and linked it from the home page. I added a function in `views.py` that retrieves all items from the database and passes them to the template. In the template, I displayed a list of items from the database, showing selected fields for each item with appropriate labels or headers. Finally, I applied styling to the page to ensure it matched the overall design of the site.
- I also created a `forms.py` to create a form to input and edit data
+**Form**
 ```python
 # Form for recommending a new place (with photo)
 class PlaceRecommendationForm(forms.ModelForm):
@@ -145,6 +157,7 @@ class PlaceRecommendationForm(forms.ModelForm):
             'score': forms.RadioSelect(attrs={'class': 'horizontal-radio'}),
         }
 ```
+**Views**
 ```python
 # Handles the place recommendation form: show form on GET, save recommendation on POST
 def recommendation_view(request):
@@ -169,16 +182,21 @@ def all_recommend(request):
 
 ![alt text](media/DisplayDataBase.gif)
 
+---
+
 ## Edit And Delete Functions
  
-In this phase, I added functionality to edit and delete recommendations saved in the database. Users could update the description, name, and rating of their favorite places. To facilitate this, I created an **"edit_recommendations.html"**  to update form elements based on the existing data. Additionally, I implemented a delete feature that allowed users to remove spots from the list. The delete action was confirmed through a popup alert, ensuring that users did not accidentally delete a recommended place.
-It uses the form in `forms.py`.
+**Users can update or remove recommendations:**
+- <a href="Tourism/templates/Tourism/edit_recommendation.html"> edit_recommendation.html</a> pre-populates form fields for easy updates
+- Delete actions include confirmation prompts to prevent accidental removals
 
 ![alt text](media/EDITDELETE.gif)
 
+---
+
 ## Connect to API
 
-I decided to use an API that shows the current weather on each Argentinian province through `https://api.weatherapi.com/v1/current.json`. Added to my views.py
+**Goal:** Display real-time weather for each Argentine province via WeatherAPI `https://api.weatherapi.com/v1/current.json`
 
 ```python
 # View for showing weather summary of all provinces:
@@ -223,3 +241,27 @@ def weather_by_province_view(request):
  ```   
 
 ![alt text](media/API.gif)
+
+---
+
+## Extra Styling and JS
+
+
+- **Interactive Map:** An interactive map sourced from `SimpleMaps.com` was integrated to enhance the user experience. Clicking on a province redirects the user to its recommendations and displays real-time weather information.
+
+- **Enhanced UI:** Custom JS and CSS improve interactivity and usability
+
+
+
+![alt text](media/MAPJS.gif)
+
+
+---
+
+### Live Project Rules
+**Stories:** Complete 1–4 minimum; finishing more strengthens your portfolio.
+**Daily Updates:** Join daily stand-ups. Send progress emails to the team. 
+**Branching:** Follow naming conventions; never commit directly to `main`.
+**Debugging:** Test often; try solving issues yourself or with peers before asking the project director.
+
+---

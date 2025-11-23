@@ -222,8 +222,8 @@ def unslugify_province(slug):
     return province_map.get(slug, slug.replace("-", " ").title())
 
 def fetch_weather_for(province_name):
-    # You can optimize by caching or reuse API key
-    api_key = "e6c2f9519b8844a4945191838251207"
+    
+    api_key = "***API KEY***"  # Where I put my actual API key
     try:
         response = requests.get("https://api.weatherapi.com/v1/current.json", params={
             "key": api_key,
@@ -268,7 +268,7 @@ def weather_by_province_view(request):
         "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tierra del Fuego", "Tucumán"
     ]
 
-    api_key = "e6c2f9519b8844a4945191838251207"
+    api_key = "***API KEY***"  # Where I put my actual API key
     weather_data = []
 
     for province in provinces:
